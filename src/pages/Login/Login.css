@@ -1,0 +1,10 @@
+.grid {
+  margin: 10px;
+}
+.ontopboard img {
+  width: 8em;
+}
+.flex-space {
+  display: flex;
+  justify-content: space-between;
+}

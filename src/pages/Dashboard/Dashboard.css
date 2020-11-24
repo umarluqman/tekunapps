@@ -1,0 +1,41 @@
+/* .swiper-slide {
+  width: 65%;
+} */
+.swiper-slide img {
+  border-radius: 10px !important;
+}
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: 0px;
+}
+
+/* Menu */
+.iconMenu {
+  font-weight: 300;
+  text-align: center;
+  box-shadow: 0px 9px 10px rgba(8, 58, 125, 4%);
+  border-radius: 10px;
+  margin: 5px;
+  padding: 30px 0;
+  line-height: 30px;
+  color: #083a7d;
+  background-color: #ffffff;
+}
+.iconMenu ion-img {
+  margin: 0 auto;
+  width: 3em;
+  height: 3em;
+}
+.notifikasi {
+  padding: 10px;
+  margin-top: 10px;
+  box-shadow: 0px 9px 10px rgb(8 58 125 / 4%);
+  line-height: 31px;
+  background-color: #ffffff;
+}
+.notifikasi ion-icon {
+  font-size: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
