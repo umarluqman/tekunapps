@@ -33,7 +33,7 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 import Login from "./pages/Login/Login";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import RegisterForm from "./components/RegisterForm";
+import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile";
 import Notification from "./pages/Notification/Notification";
 
@@ -55,23 +55,23 @@ const App: React.FC = () => (
           <Route path="/Dashboard" component={Dashboard} exact={true} />
           <Route path="/Notification" component={Notification} exact={true} />
           <Route path="/Profile" component={Profile} exact={true} />
-          <Route path="/RegisterForm" component={RegisterForm} exact={true} />
+          <Route path="/Register" component={Register} exact={true} />
           <Route exact path="/" render={() => <Redirect to="/home" />} />
         </IonRouterOutlet>
 
         <IonTabBar slot="bottom">
-          <IonTabButton tab="Dashboard" href="Dashboard">
+          <IonTabButton tab="Dashboard" href="/Dashboard">
             <IonIcon icon={homeOutline} />
             <IonLabel>Home</IonLabel>
           </IonTabButton>
 
-          <IonTabButton tab="Notification" href="Notification">
+          <IonTabButton tab="Notification" href="/Notification">
             <IonIcon icon={notificationsOutline} />
             <IonLabel>Notifikasi</IonLabel>
             <IonBadge color="success">6</IonBadge>
           </IonTabButton>
 
-          <IonTabButton tab="Profile" href="Profile">
+          <IonTabButton tab="Profile" href="/Profile">
             <IonIcon icon={personOutline} />
             <IonLabel>Profile</IonLabel>
           </IonTabButton>

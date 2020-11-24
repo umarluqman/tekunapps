@@ -92,7 +92,7 @@ class LoginForm extends Component {
                   label="Ingat kata laluan"
                 />
                 <Button
-                  // href="/Dashboard"
+                  href="/Dashboard"
                   type="submit"
                   value="Login"
                   fullWidth
@@ -110,7 +110,7 @@ class LoginForm extends Component {
                     </Link>
                   </Grid>
                   <Grid item>
-                    <Link href="/RegisterForm" variant="body2">
+                    <Link href="/Register" variant="body2">
                       {"Daftar Akaun?"}
                     </Link>
                   </Grid>

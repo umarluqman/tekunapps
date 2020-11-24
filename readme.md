@@ -48,25 +48,25 @@ Sandbox : https://tekun2.nakmenangtender.com/login
 
 # [ ☑ ] Login Page
 
-# [x] Registration Page
+# [ ☑ ] Registration Page
 
 # [x] Validation
 
-# [x] Dasboard Route
+# [ ☑ ] Dasboard Route
 
-# [x] Dashboard Page
+# [ ☑ ] Dashboard Page
 
-# [x] Menu tabs
+# [ ☑ ] Menu tabs
 
 # [x] Toast Loading ./check
 
-# [x] Profile Page
+# [ ☑ ] Profile Page
 
-# [x] Profile Menu
+# [ ☑ ] Profile Menu
 
-# [x] Profile Accordion list
+# [ ☑ ] Profile Accordion list
 
-# [x] Profile Accordion list : Maklumat Asas, Maklumat Peribadi, Maklumat Perniagaan
+# [ ☑ ] Profile Accordion list : Maklumat Asas, Maklumat Peribadi, Maklumat Perniagaan
 
 # [x] Profile Accordion list : > Validation, async
 
