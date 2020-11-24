@@ -31,7 +31,7 @@ class RegisterForm extends Component {
       this.state.email &&
       this.state.name
     ) {
-      PostData("register", this.state).then((result) => {
+      PostData("/api/registerakaun", this.state).then((result) => {
         let responseJson = result;
         if (responseJson.userData) {
           sessionStorage.setItem("userData", JSON.stringify(responseJson));
