@@ -7,7 +7,7 @@ Step for Ionic react installation
 
 1. Download and install node.js at https://nodejs.org/en/download/
 2. Run <npm install -g ionic> on CLI
-3. Run git clone https://github.com/developer-unijaya/tekun-apps-ir.git
+3. Run git clone https://github.com/developer-unijaya/tekunapps.git
 4. If MAC OS users have different setup
 5. Run <npm install>
 6. Run <npm start or ionic serve>
