@@ -9,8 +9,8 @@ Step for Ionic react installation
 2. Run <npm install -g ionic> on CLI
 3. Run git clone https://github.com/Dinunijaya/tekunapps.git
 4. If MAC OS users have different setup
-5. Run <npm install>
-6. Run <npm start or ionic serve>
+5. Run `npm install` or `yarn install` 
+6. Run `npm start` or `ionic serve`
 7. Change API path (depends on local/staging/production project)
 8. Do remember that apps use API. API coming from backend. Backend need to configure and deliver what apps request
 9. Contact (DinUnijaya) if face any issue
@@ -21,9 +21,9 @@ Step for Ionic react installation
 
 # tekun_staging
 
-TekunLive : https://tekunfin.tekun.gov.my/login
-Staging : https://tekunfin.tekun.gov.my/staging/login
-Sandbox : https://tekun2.nakmenangtender.com/login
+TekunLive : https://tekunfin.tekun.gov.my/login <br>
+Staging : https://tekunfin.tekun.gov.my/staging/login<br>
+Sandbox : https://tekun2.nakmenangtender.com/login<br>
 
 # Tools and Standard Practice
 

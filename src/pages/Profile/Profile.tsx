@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import { useHistory } from "react-router";
+import { getUser, removeUserSession } from "../../Utils/Common";
 import {
   IonContent,
   IonHeader,
@@ -13,6 +14,9 @@ import {
   IonCol,
   IonImg,
   IonText,
+  IonButton,
+  IonFab,
+  IonFabButton,
 } from "@ionic/react";
 
 import { motion } from "framer-motion";
@@ -26,6 +30,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 
 import "./Profile.css";
 import Collapsible from "react-collapsible";
+import { create } from "ionicons/icons";
+import { red } from "@material-ui/core/colors";
 
 const namaNegeri = [
   { value: "Pulau Pinang", label: "Pulau Pinang" },
@@ -51,6 +57,15 @@ const kaedahPemasaran = [
   { value: "Online & Offline", label: "Online & Offline" },
 ];
 const Profile: React.FC = (props) => {
+  const user = getUser();
+  const history = useHistory();
+
+  // handle click event of logout button
+  const handleLogout = () => {
+    removeUserSession();
+    history.push("/login");
+  };
+
   const [negeri, setNegeri] = useState("Kuala Lumpur");
   const [perniagaan, setPerniagaan] = useState("Sedang Berniaga");
   const [namabank, setNamabank] = useState("CIMB BANK BERHAD");
@@ -58,6 +73,7 @@ const Profile: React.FC = (props) => {
   const [pemasaran, setPemasaran] = useState("Online");
   const [akaunbank, setAkaunbank] = useState("12345");
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    alert("handleChange");
     setNegeri(event.target.value);
     setPerniagaan(event.target.value);
     setNamabank(event.target.value);
@@ -77,6 +93,15 @@ const Profile: React.FC = (props) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
+        <IonCardContent>
+        No Kad Pengenalan : {user.no_kp_baru}
+        <br />
+        Email : {user.email}
+        <br />
+        No Tel : {user.no_tel}
+        {/* <input type="button" onClick={handleLogout} value="Logout" /> */}
+        </IonCardContent>
+        
         <Collapsible trigger="Maklumat Asas">
           <Grid className="grid">
             <form className="form" noValidate>
@@ -193,22 +218,12 @@ const Profile: React.FC = (props) => {
             section!
           </p>
         </Collapsible>
-        <IonCardContent>
-          <IonRow>
-            <IonCol className="iconMenu">
-              <IonImg src="/assets/icon/doc.svg" alt="Document" />
-              <IonText>Status Pemohon</IonText>
-            </IonCol>
-            <IonCol className="iconMenu">
-              <IonImg src="/assets/icon/callcenter.svg" alt="Document" />
-              <IonText>Bantuan</IonText>
-            </IonCol>
-            <IonCol className="iconMenu">
-              <IonImg src="/assets/icon/map.svg" alt="Document" />
-              <IonText>Cawangan</IonText>
-            </IonCol>
-          </IonRow>
-        </IonCardContent>
+        <IonButton expand="full" type="button" onClick={handleLogout}>Log Keluar</IonButton>
+        <IonFab vertical="bottom" horizontal="end" slot="fixed">
+          <IonFabButton>
+            <img src="./assets/icon/edit.svg" alt="edit" />
+          </IonFabButton>
+        </IonFab>
       </IonContent>
     </IonPage>
   );

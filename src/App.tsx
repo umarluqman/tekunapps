@@ -1,5 +1,11 @@
-import React from "react";
-import { Redirect, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Redirect, Route, Switch } from "react-router-dom";
+
+import PrivateRoute from "./Utils/PrivateRoute";
+import PublicRoute from "./Utils/PublicRoute";
+import { getToken, removeUserSession, setUserSession } from "./Utils/Common";
+
 import {
   IonApp,
   IonBadge,
@@ -45,40 +51,72 @@ import {
 
 import "./Apps.css";
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route path="/Login" component={Login} exact={true} />
-          <Route path="/Home" component={Home} exact={true} />
-          <Route path="/Dashboard" component={Dashboard} exact={true} />
-          <Route path="/Notification" component={Notification} exact={true} />
-          <Route path="/Profile" component={Profile} exact={true} />
-          <Route path="/Register" component={Register} exact={true} />
-          <Route exact path="/" render={() => <Redirect to="/home" />} />
-        </IonRouterOutlet>
+const App: React.FC = (props) => {
+  const [authLoading, setAuthLoading] = useState(true);
 
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="Dashboard" href="/Dashboard">
-            <IonIcon icon={homeOutline} />
-            <IonLabel>Home</IonLabel>
-          </IonTabButton>
+  useEffect(() => {
+    const token = getToken();
+    if (!token) {
+      return;
+    }
 
-          <IonTabButton tab="Notification" href="/Notification">
-            <IonIcon icon={notificationsOutline} />
-            <IonLabel>Notifikasi</IonLabel>
-            <IonBadge color="success">6</IonBadge>
-          </IonTabButton>
+    axios
+      .get(`https://tekun2.nakmenangtender.com/api=${token}`)
+      .then((response) => {
+        setUserSession(response.data.token, response.data.user_info);
+        setAuthLoading(false);
+      })
+      .catch((error) => {
+        removeUserSession();
+        setAuthLoading(false);
+      });
+  }, []);
 
-          <IonTabButton tab="Profile" href="/Profile">
-            <IonIcon icon={personOutline} />
-            <IonLabel>Profile</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+  if (authLoading && getToken()) {
+    return <div className="content">Checking Authentication...</div>;
+  }
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Switch>
+              <PrivateRoute path="/dashboard" component={Dashboard} />
+              <PrivateRoute
+                path="/Notification"
+                component={Notification}
+                exact={true}
+              />
+              <PrivateRoute path="/Profile" component={Profile} exact={true} />
+              <Route path="/login" component={Login} />
+              <Route path="/Home" component={Home} exact={true} />
+              <Route path="/Register" component={Register} exact={true} />
+              <Route exact path="/" render={() => <Redirect to="/home" />} />
+            </Switch>
+          </IonRouterOutlet>
+
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="Dashboard" href="/Dashboard">
+              <img src="./assets/icon/dashboard.svg" alt="dashboard" />
+              <IonLabel>Home</IonLabel>
+            </IonTabButton>
+
+            <IonTabButton tab="Notification" href="/Notification">
+              <img src="./assets/icon/notification.svg" alt="notification" />
+              <IonLabel>Notifikasi</IonLabel>
+              <IonBadge color="success">3</IonBadge>
+            </IonTabButton>
+
+            <IonTabButton tab="Profile" href="/Profile">
+              <img src="./assets/icon/people.svg" alt="people" />
+              <IonLabel>Profile</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;
